@@ -11,9 +11,8 @@ namespace DevQuestions.Domain.Comments
         public Guid Id { get; set; }
         public Guid UserId { get; set; }
         public required string Text { get; set; }
-        public Comment? parrent { get; set; }
-        public List<Comment> children { get; set; } = [];
+        public Comment? Parent { get; set; }
+        public List<Comment> Children { get; set; } = [];
         public required Guid EntityId { get; set; }
-
     }
 }

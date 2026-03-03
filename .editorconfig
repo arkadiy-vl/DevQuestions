@@ -1,0 +1,479 @@
+﻿# EditorConfig для проектов ASP.NET с поддержкой StyleCop.Analyzers
+# Корневой файл конфигурации — поместите в корень решения или проекта
+
+root = true
+
+# ----------------------------------------
+# Общие настройки для всех файлов
+# ----------------------------------------
+
+[*]
+# Кодировка файлов (UTF-8 with BOM для Windows, без BOM для кроссплатформенности)
+# Visual Studio по умолчанию использует UTF-8 BOM для новых файлов, можно оставить BOM для совместимости
+charset = utf-8-bom
+
+# Отступы — пробелы (рекомендуется для кроссплатформенности)
+indent_style = space
+
+# Размер отступа — 4 пробела (стандарт для C#)
+indent_size = 4
+
+# Символ конца строки — CRLF для Windows, LF для Linux/macOS
+# Если проект ориентирован на Windows, можно оставить crlf, иначе лучше lf
+end_of_line = crlf
+
+# Удалять завершающие пробелы
+trim_trailing_whitespace = true
+
+# Вставлять пустую строку в конце файла
+insert_final_newline = true
+dotnet_style_operator_placement_when_wrapping = beginning_of_line
+tab_width = 4
+dotnet_style_coalesce_expression = true:suggestion
+dotnet_style_null_propagation = true:suggestion
+dotnet_style_prefer_is_null_check_over_reference_equality_method = true:suggestion
+dotnet_style_prefer_auto_properties = true:silent
+dotnet_style_object_initializer = true:suggestion
+dotnet_style_collection_initializer = true:suggestion
+dotnet_style_prefer_simplified_boolean_expressions = true:suggestion
+dotnet_style_prefer_conditional_expression_over_assignment = true:silent
+dotnet_style_prefer_conditional_expression_over_return = true:silent
+dotnet_style_explicit_tuple_names = true:suggestion
+dotnet_style_prefer_inferred_tuple_names = true:suggestion
+dotnet_style_prefer_inferred_anonymous_type_member_names = true:suggestion
+dotnet_style_prefer_compound_assignment = true:suggestion
+dotnet_style_prefer_simplified_interpolation = true:suggestion
+dotnet_style_prefer_collection_expression = when_types_loosely_match:suggestion
+dotnet_style_namespace_match_folder = true:suggestion
+dotnet_code_quality_unused_parameters = all:suggestion
+dotnet_style_predefined_type_for_member_access = true:silent
+dotnet_style_predefined_type_for_locals_parameters_members = true:silent
+dotnet_style_qualification_for_field = false:silent
+dotnet_style_qualification_for_property = false:silent
+dotnet_style_qualification_for_method = false:silent
+dotnet_style_qualification_for_event = false:silent
+dotnet_style_allow_multiple_blank_lines_experimental = true:silent
+dotnet_style_allow_statement_immediately_after_block_experimental = true:silent
+dotnet_style_readonly_field = true:suggestion
+dotnet_style_parentheses_in_arithmetic_binary_operators = always_for_clarity:silent
+dotnet_style_parentheses_in_other_binary_operators = always_for_clarity:silent
+dotnet_style_parentheses_in_relational_binary_operators = always_for_clarity:silent
+dotnet_style_parentheses_in_other_operators = never_if_unnecessary:silent
+dotnet_style_require_accessibility_modifiers = always:warning
+
+# ----------------------------------------
+# Настройки для файлов C#
+# ----------------------------------------
+
+[*.cs]
+
+# ----------------------------------------
+# Базовые правила форматирования кода (dotnet/roslyn)
+# ----------------------------------------
+
+# Порядок директив using: сначала System, потом остальные
+dotnet_sort_system_directives_first = true
+
+# Разрешить несколько using вне namespace (default) или внутри
+# csharp_using_directive_placement = outside_namespace : warning
+
+# Использование var для встроенных типов (int, string и т.д.)
+csharp_style_var_for_built_in_types = true:warning
+csharp_style_var_when_type_is_apparent = true:warning
+csharp_style_var_elsewhere = true:warning
+
+# Предпочитать явный тип для переменных, где тип не очевиден (компромисс)
+# csharp_style_var_elsewhere = false:suggestion
+
+# Модификаторы доступа: требовать явного указания
+dotnet_style_require_accessibility_modifiers = always:warning
+
+# Модификатор this. для полей/методов: не использовать (как в StyleCop по умолчанию)
+# Но можно разрешить для методов расширения и т.д.
+csharp_style_qualification_for_field = false:warning
+csharp_style_qualification_for_property = false:warning
+csharp_style_qualification_for_method = false:warning
+csharp_style_qualification_for_event = false:warning
+
+# Предпочитать простые строковые выражения ($"" вместо string.Format)
+csharp_style_prefer_simple_string_interpolation = true:suggestion
+
+# Предпочитать явное использование Tuple имен
+csharp_style_explicit_tuple_names = true:warning
+
+# Предпочитать автоматические свойства
+csharp_style_auto_property = true:warning
+
+# Предпочитать "is null" вместо "== null"
+csharp_style_prefer_null_check_over_type_check = true:warning
+
+# Использование throw выражений
+csharp_style_throw_expression = true:suggestion
+
+# ----------------------------------------
+# Правила переносов и пробелов (C#)
+# ----------------------------------------
+
+# Новая строка после using, между методами и т.д.
+csharp_new_line_before_open_brace = all
+csharp_new_line_before_else = true
+csharp_new_line_before_catch = true
+csharp_new_line_before_finally = true
+csharp_new_line_before_members_in_object_initializers = true
+csharp_new_line_before_members_in_anonymous_types = true
+csharp_new_line_between_query_expression_clauses = true
+
+# Пробелы
+csharp_space_after_cast = false
+csharp_space_after_keywords_in_control_flow_statements = true
+csharp_space_between_parentheses = false
+csharp_space_before_open_square_brackets = false
+csharp_space_between_empty_square_brackets = false
+csharp_space_between_square_brackets = false
+
+# ----------------------------------------
+# Правила StyleCop.Analyzers (SAxxxx)
+# ----------------------------------------
+
+# Общая документация
+# SA0001: XML comment analysis — отключено, если не требуется анализ документации
+dotnet_diagnostic.SA0001.severity = none
+
+# SA1005: Однострочный комментарий должен начинаться с пробела
+dotnet_diagnostic.SA1005.severity = warning
+
+# SA1027: Вкладки не должны использоваться — но у нас indent_style = space, так что автоматически OK
+dotnet_diagnostic.SA1027.severity = warning
+
+# SA1101: Префикс локальных вызовов с this — не использовать (см. выше csharp_style_qualification)
+dotnet_diagnostic.SA1101.severity = none
+
+# SA1118: Параметры не должны занимать несколько строк (можно ослабить)
+dotnet_diagnostic.SA1118.severity = suggestion
+
+# SA1122: Использовать string.Empty вместо ""
+dotnet_diagnostic.SA1122.severity = warning
+
+# SA1200: Директивы using должны быть внутри namespace (или снаружи — зависит от команды)
+# Здесь выбираем "внутри namespace" (стиль StyleCop по умолчанию)
+dotnet_diagnostic.SA1200.severity = none
+# Чтобы разрешить using вне namespace, можно установить severity = none и настроить
+stylecop.usingDirectivesPlacement = outsideNamespace
+
+# SA1201: Элементы класса должны следовать порядку (поля, конструкторы, свойства, методы...)
+dotnet_diagnostic.SA1201.severity = warning
+
+# SA1202: Методы должны быть сгруппированы по доступу (public, internal, private...)
+dotnet_diagnostic.SA1202.severity = warning
+
+# SA1204: Статические элементы должны появляться перед нестатическими
+dotnet_diagnostic.SA1204.severity = warning
+
+# SA1309: Имена полей не должны начинаться с подчёркивания (часто отключают, если используется _field)
+dotnet_diagnostic.SA1309.severity = none
+# Альтернативно, можно настроить разрешённые префиксы
+# stylecop.fieldNamePrefix = _
+
+# SA1310: Имена полей не должны содержать подчёркивание (если не отключено)
+dotnet_diagnostic.SA1310.severity = none
+
+# SA1400: Элемент доступа должен объявлять модификатор доступа (см. dotnet_style_require_accessibility_modifiers)
+# SA1400 — устарел, но может быть включен как предупреждение
+dotnet_diagnostic.SA1400.severity = warning
+
+# SA1413: Использовать trailing comma в инициализаторах (опционально)
+dotnet_diagnostic.SA1413.severity = suggestion
+
+# SA1500: Фигурные скобки для многострочных конструкций должны быть на отдельной строке
+dotnet_diagnostic.SA1500.severity = warning
+
+# SA1501: Фигурные скобки не должны быть на одной строке с выражением
+dotnet_diagnostic.SA1501.severity = warning
+
+# SA1503: Фигурные скобки должны использоваться даже для однострочных блоков (можно настроить)
+dotnet_diagnostic.SA1503.severity = none
+
+# SA1512: Однострочные комментарии должны отделяться пустой строкой от кода
+dotnet_diagnostic.SA1512.severity = suggestion
+
+# SA1515: Однострочный комментарий должен отделяться пустой строкой от предыдущего кода
+dotnet_diagnostic.SA1515.severity = suggestion
+
+# SA1516: Элементы должны разделяться пустой строкой
+dotnet_diagnostic.SA1516.severity = warning
+
+# SA1600: Элементы должны иметь XML-документацию (часто включают как информацию)
+dotnet_diagnostic.SA1600.severity = none
+
+# SA1601: Частичные элементы должны быть документированы
+dotnet_diagnostic.SA1601.severity = none
+
+# SA1611: Параметры метода должны быть задокументированы (если включено SA1600, то и это)
+dotnet_diagnostic.SA1611.severity = suggestion
+
+# SA1629: Текст документации не должен заканчиваться точкой (противоречиво, часто отключают)
+dotnet_diagnostic.SA1629.severity = none
+
+# SA1633: Файл должен содержать заголовок (можно отключить или задать шаблон)
+dotnet_diagnostic.SA1633.severity = none
+# Если нужен заголовок, можно настроить:
+# stylecop.documentation.company = YourCompany
+# stylecop.documentation.copyright = Copyright (c) YourCompany. All rights reserved.
+# stylecop.documentation.fileHeaderTemplate = Copyright (c) {company}. All rights reserved.
+
+# SA1642: Конструктор должен быть задокументирован
+dotnet_diagnostic.SA1642.severity = suggestion
+
+# SA1313: Parameter Names Must Begin With Lower Case Letter
+dotnet_diagnostic.SA1313.severity = none
+
+# SA1116: Split Parameters Must Start On Line After Declaration
+dotnet_diagnostic.SA1116.severity = none
+
+# SA1516: Elements Must Be Separated By Blank Line
+dotnet_diagnostic.SA1516.severity = none
+
+# SA1206: Declaration Keywords Must Follow Order
+dotnet_diagnostic.SA1206.severity = none
+
+# ----------------------------------------
+# Настройки StyleCop.Analyzers (опции)
+# ----------------------------------------
+
+# Размещение using директив: внутри namespace
+stylecop.usingDirectivesPlacement = insideNamespace
+
+# Разрешённый префикс для приватных полей (если используется _)
+stylecop.fieldNamePrefix = _
+
+# Включить анализ документации для всех элементов
+stylecop.documentationRules = true
+
+
+
+# ----------------------------------------
+# Дополнительные настройки для файлов Razor и Web
+# ----------------------------------------
+
+[*.{cshtml,razor}]
+indent_size = 4
+indent_style = space
+charset = utf-8-bom
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.{html,htm}]
+indent_size = 4
+indent_style = space
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.{css,scss,less}]
+indent_size = 4
+indent_style = space
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.js]
+indent_size = 4
+indent_style = space
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.{json,jsonc}]
+indent_size = 4
+indent_style = space
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.xml]
+indent_size = 4
+indent_style = space
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# ----------------------------------------
+# Настройки для файлов конфигурации
+# ----------------------------------------
+
+[*.{config,props,targets}]
+indent_size = 4
+indent_style = space
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.{yml,yaml}]
+indent_size = 4
+indent_style = space
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# ----------------------------------------
+# Исключения (например, для сгенерированных файлов)
+# ----------------------------------------
+
+[**/*.Designer.cs]
+# Сгенерированные файлы — можно ослабить проверки
+dotnet_analyzer_documentation_file = none
+generated_code = true
+# Отключаем StyleCop для таких файлов
+dotnet_diagnostic.SA0001.severity = none
+dotnet_diagnostic.SA1600.severity = none
+# ... при необходимости можно отключить все анализаторы или только документацию
+
+[**/*.g.cs]
+generated_code = true
+dotnet_analyzer_documentation_file = none
+
+[**/*.Generated.cs]
+generated_code = true
+dotnet_analyzer_documentation_file = none
+[*.cs]
+#### Стили именования ####
+
+# Правила именования
+
+dotnet_naming_rule.interface_should_be_begins_with_i.severity = suggestion
+dotnet_naming_rule.interface_should_be_begins_with_i.symbols = interface
+dotnet_naming_rule.interface_should_be_begins_with_i.style = begins_with_i
+
+dotnet_naming_rule.types_should_be_pascal_case.severity = suggestion
+dotnet_naming_rule.types_should_be_pascal_case.symbols = types
+dotnet_naming_rule.types_should_be_pascal_case.style = pascal_case
+
+dotnet_naming_rule.non_field_members_should_be_pascal_case.severity = suggestion
+dotnet_naming_rule.non_field_members_should_be_pascal_case.symbols = non_field_members
+dotnet_naming_rule.non_field_members_should_be_pascal_case.style = pascal_case
+
+# Спецификации символов
+
+dotnet_naming_symbols.interface.applicable_kinds = interface
+dotnet_naming_symbols.interface.applicable_accessibilities = public, internal, private, protected, protected_internal, private_protected
+dotnet_naming_symbols.interface.required_modifiers =
+
+dotnet_naming_symbols.types.applicable_kinds = class, struct, interface, enum
+dotnet_naming_symbols.types.applicable_accessibilities = public, internal, private, protected, protected_internal, private_protected
+dotnet_naming_symbols.types.required_modifiers =
+
+dotnet_naming_symbols.non_field_members.applicable_kinds = property, event, method
+dotnet_naming_symbols.non_field_members.applicable_accessibilities = public, internal, private, protected, protected_internal, private_protected
+dotnet_naming_symbols.non_field_members.required_modifiers =
+
+# Стили именования
+
+dotnet_naming_style.begins_with_i.required_prefix = I
+dotnet_naming_style.begins_with_i.required_suffix =
+dotnet_naming_style.begins_with_i.word_separator =
+dotnet_naming_style.begins_with_i.capitalization = pascal_case
+
+dotnet_naming_style.pascal_case.required_prefix =
+dotnet_naming_style.pascal_case.required_suffix =
+dotnet_naming_style.pascal_case.word_separator =
+dotnet_naming_style.pascal_case.capitalization = pascal_case
+
+dotnet_naming_style.pascal_case.required_prefix =
+dotnet_naming_style.pascal_case.required_suffix =
+dotnet_naming_style.pascal_case.word_separator =
+dotnet_naming_style.pascal_case.capitalization = pascal_case
+csharp_indent_labels = one_less_than_current
+csharp_space_around_binary_operators = before_and_after
+csharp_prefer_simple_default_expression = true:suggestion
+csharp_style_prefer_local_over_anonymous_function = true:suggestion
+csharp_style_prefer_index_operator = true:suggestion
+csharp_style_prefer_range_operator = true:suggestion
+csharp_style_implicit_object_creation_when_type_is_apparent = true:suggestion
+csharp_style_prefer_implicitly_typed_lambda_expression = true:suggestion
+csharp_style_prefer_tuple_swap = true:suggestion
+csharp_style_prefer_unbound_generic_type_in_nameof = true:suggestion
+csharp_style_prefer_utf8_string_literals = true:suggestion
+csharp_style_inlined_variable_declaration = true:suggestion
+csharp_style_deconstructed_variable_declaration = true:suggestion
+csharp_style_unused_value_assignment_preference = discard_variable:suggestion
+csharp_style_unused_value_expression_statement_preference = discard_variable:silent
+csharp_style_conditional_delegate_call = true:suggestion
+csharp_style_prefer_switch_expression = true:suggestion
+csharp_style_prefer_pattern_matching = true:silent
+csharp_style_pattern_matching_over_is_with_cast_check = true:suggestion
+csharp_style_pattern_matching_over_as_with_null_check = true:suggestion
+csharp_style_prefer_not_pattern = true:suggestion
+csharp_style_prefer_extended_property_pattern = true:suggestion
+csharp_prefer_simple_using_statement = true:suggestion
+csharp_prefer_braces = true:silent
+csharp_style_namespace_declarations = block_scoped:silent
+csharp_style_prefer_method_group_conversion = true:silent
+csharp_style_prefer_top_level_statements = true:silent
+csharp_style_prefer_primary_constructors = true:suggestion
+csharp_prefer_system_threading_lock = true:suggestion
+csharp_using_directive_placement = outside_namespace:silent
+csharp_style_allow_blank_lines_between_consecutive_braces_experimental = true:silent
+csharp_style_allow_embedded_statements_on_same_line_experimental = true:silent
+csharp_style_allow_blank_line_after_colon_in_constructor_initializer_experimental = true:silent
+csharp_style_allow_blank_line_after_token_in_conditional_expression_experimental = true:silent
+csharp_style_allow_blank_line_after_token_in_arrow_expression_clause_experimental = true:silent
+csharp_prefer_static_local_function = true:suggestion
+csharp_prefer_static_anonymous_function = true:suggestion
+csharp_style_prefer_readonly_struct = true:suggestion
+csharp_style_prefer_readonly_struct_member = true:suggestion
+csharp_style_expression_bodied_methods = false:silent
+csharp_style_expression_bodied_constructors = false:silent
+csharp_style_expression_bodied_operators = false:silent
+csharp_style_expression_bodied_properties = true:silent
+csharp_style_expression_bodied_indexers = true:silent
+csharp_style_expression_bodied_accessors = true:silent
+csharp_style_expression_bodied_lambdas = true:silent
+csharp_style_expression_bodied_local_functions = false:silent
+
+[*.vb]
+#### Стили именования ####
+
+# Правила именования
+
+dotnet_naming_rule.interface_should_be_начинается_с_i.severity = suggestion
+dotnet_naming_rule.interface_should_be_начинается_с_i.symbols = interface
+dotnet_naming_rule.interface_should_be_начинается_с_i.style = начинается_с_i
+
+dotnet_naming_rule.типы_should_be_всечастиспрописнойбуквы.severity = suggestion
+dotnet_naming_rule.типы_should_be_всечастиспрописнойбуквы.symbols = типы
+dotnet_naming_rule.типы_should_be_всечастиспрописнойбуквы.style = всечастиспрописнойбуквы
+
+dotnet_naming_rule.не_являющиеся_полем_члены_should_be_всечастиспрописнойбуквы.severity = suggestion
+dotnet_naming_rule.не_являющиеся_полем_члены_should_be_всечастиспрописнойбуквы.symbols = не_являющиеся_полем_члены
+dotnet_naming_rule.не_являющиеся_полем_члены_should_be_всечастиспрописнойбуквы.style = всечастиспрописнойбуквы
+
+# Спецификации символов
+
+dotnet_naming_symbols.interface.applicable_kinds = interface
+dotnet_naming_symbols.interface.applicable_accessibilities = public, friend, private, protected, protected_friend, private_protected
+dotnet_naming_symbols.interface.required_modifiers =
+
+dotnet_naming_symbols.типы.applicable_kinds = class, struct, interface, enum
+dotnet_naming_symbols.типы.applicable_accessibilities = public, friend, private, protected, protected_friend, private_protected
+dotnet_naming_symbols.типы.required_modifiers =
+
+dotnet_naming_symbols.не_являющиеся_полем_члены.applicable_kinds = property, event, method
+dotnet_naming_symbols.не_являющиеся_полем_члены.applicable_accessibilities = public, friend, private, protected, protected_friend, private_protected
+dotnet_naming_symbols.не_являющиеся_полем_члены.required_modifiers =
+
+# Стили именования
+
+dotnet_naming_style.начинается_с_i.required_prefix = I
+dotnet_naming_style.начинается_с_i.required_suffix =
+dotnet_naming_style.начинается_с_i.word_separator =
+dotnet_naming_style.начинается_с_i.capitalization = pascal_case
+
+dotnet_naming_style.всечастиспрописнойбуквы.required_prefix =
+dotnet_naming_style.всечастиспрописнойбуквы.required_suffix =
+dotnet_naming_style.всечастиспрописнойбуквы.word_separator =
+dotnet_naming_style.всечастиспрописнойбуквы.capitalization = pascal_case
+
+dotnet_naming_style.всечастиспрописнойбуквы.required_prefix =
+dotnet_naming_style.всечастиспрописнойбуквы.required_suffix =
+dotnet_naming_style.всечастиспрописнойбуквы.word_separator =
+dotnet_naming_style.всечастиспрописнойбуквы.capitalization = pascal_case
